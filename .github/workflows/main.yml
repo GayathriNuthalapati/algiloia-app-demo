@@ -96,12 +96,12 @@ jobs:
         KEY: ${{ secrets.decryption_key }}
       run: |
         artifactName=$(ls *.jar | head -1)
-        mvn deploy -DmuleDeploy \
+        mvn clean package -DmuleDeploy -Dmule.runtime.version=4.4.0 \
          -Dmule.artifact=$artifactName \
-         -Danypoint.username="$USERNAME" \
-         -Danypoint.password="$PASSWORD" \
+         -Danypoint.username=AlgoliaSample \
+         -Danypoint.password=Algolia#123 \
          -Denv=qa \
-         -Dappname=algolia-123243-qa-g \
+         -Dappname=sample-algolia-app-qa \
          -Ddecryption.key="$KEY"
   
   deployprod:
@@ -127,10 +127,10 @@ jobs:
         KEY: ${{ secrets.decryption_key }}
       run: |
         artifactName=$(ls *.jar | head -1)
-        mvn deploy -DmuleDeploy \
+        mvn clean package -DmuleDeploy -Dmule.runtime.version=4.4.0 \
          -Dmule.artifact=$artifactName \
-         -Danypoint.username="$USERNAME" \
-         -Danypoint.password="$PASSWORD" \
+         -Danypoint.username=AlgoliaSample \
+         -Danypoint.password=Algolia#123 \
          -Denv=prod \
-         -Dappname=algolia-123243-prod-g \
+         -Dappname=sample-algolia-app-prod \
          -Ddecryption.key="$KEY"
